@@ -47,14 +47,16 @@ react-native 번들에 무엇이 있는지 확인한다.
 매번 브릿지를 거치지 않고 네이티브에서 애니메이션을 수행하므로 부드러운 움직임을 나타낼 수 있습니다.
 
 
-## 8. inline 요소 사용 지양
-
+### 8. inline 요소 사용 지양
+````
 <Component onPress={()⇒onclick()} />
 
 const onClick = () ⇒ {}
 <Component onPress={onClick} />
 
-## 9. clean up 처리하기 (login presenter)
+````
+
+### 9. clean up 처리하기 (login presenter)
 
 ![clean up](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/d1e10e74-dee8-4c6e-aebf-78f50fee1d4f/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210124T110258Z&X-Amz-Expires=86400&X-Amz-Signature=59a058f69a836076149a1b8a43ebcae5484a6858e02f06ba642898065757101d&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
@@ -80,7 +82,7 @@ library 사용시 native library 위주로 사용하자
 
 ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b71b407e-84bf-4332-a486-09d01264aa5a/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b71b407e-84bf-4332-a486-09d01264aa5a/Untitled.png)
 
-### 10 Styled-component
+### 10. Styled-component
 
 -> emotion 변경 
 
@@ -93,10 +95,10 @@ library 사용시 native library 위주로 사용하자
   참고 : [https://emotion.sh/docs/theming](https://emotion.sh/docs/theming)
 
 
-### 11 글자를 빼서 공통적으로 관리(언어팩)
+### 11. 글자를 빼서 공통적으로 관리(언어팩)
 
 
-### 12 Hermes 적용(JavaScript engine, 현재 android 한정)
+### 12. Hermes 적용(JavaScript engine, 현재 android 한정)
 
 React-native Version ≥ 0.60.4
 
@@ -108,7 +110,7 @@ React-native Version ≥ 0.60.4
 
 android/app/build.gradle 파일수정
 
-```json
+```
 project.ext.react = [
       entryFile: "index.js",
      enableHermes: false  // clean and rebuild if changing
@@ -122,7 +124,7 @@ project.ext.react = [
 $ cd android && ./gradlew clean
 ```
 
-### 13 Production 시 console.* 방지
+### 13. Production 시 console.* 방지
 
 bundled(webpack / metro에 의해 묶인?) App에서 console.log는 Javascript thread에 병목현상을 발생시킬 수 있음.
 
@@ -144,4 +146,5 @@ npm i babel-plugin-transform-remove-console --save-dev
 }
 ```
 
-### 14 [https://www.novemberfive.co/blog/react-performance-navigation-animations](https://www.novemberfive.co/blog/react-performance-navigation-animations)
+### 14.
+> [https://www.novemberfive.co/blog/react-performance-navigation-animations](https://www.novemberfive.co/blog/react-performance-navigation-animations)

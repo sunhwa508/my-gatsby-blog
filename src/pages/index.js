@@ -11,22 +11,30 @@ const BlogTitle = styled.h3`
   margin-bottom: 20px;
   color: pink;
 `
+const CountPosts = styled.h4`
+  text-align: right;
+`
+const BlogDate = styled.h6`
+  font-size: 10px;
+  text-align: right;
+`
 export default ({ data }) => {
   console.log("data", data)
   return (
     <Layout>
       <SEO title="Home" />
       <div>
-        <h1>1년차의 프론트엔드 개발자의 POSTS</h1>
-        <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
+        <h4>
+          <span role="img">🦕</span>낙서장 #FF0000 <span role="img">🦕</span>
+        </h4>
+        <CountPosts>{data.allMarkdownRemark.totalCount} Posts</CountPosts>
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <div key={node.id}>
             <BlogLink to={node.fields.slug}>
-              <BlogTitle>
-                {node.frontmatter.title} - {node.frontmatter.date}
-              </BlogTitle>
+              <BlogTitle>{node.frontmatter.title}</BlogTitle>
             </BlogLink>
             <p>{node.excerpt}</p>
+            <BlogDate>{node.frontmatter.date}</BlogDate>
           </div>
         ))}
       </div>

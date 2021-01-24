@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Sunhwa Blog`,
+    title: `1년차의 프론트엔드 개발자로 살아남기 🐣`,
     description: `Sunhwa Blog`,
     author: `@sunhwajs`,
   },
