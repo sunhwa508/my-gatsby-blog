@@ -1,6 +1,7 @@
 import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
+import { Link } from "gatsby"
 
 const HeaderContainer = styled.header`
   background: white;
@@ -14,7 +15,7 @@ const HeaderDiv = styled.div`
 const HeaderText = styled.h1`
   margin: 0;
 `
-const HeaderLink = styled.Link`
+const HeaderLink = styled(Link)`
   color: black;
   text-decoration: none;
 `
