@@ -25,7 +25,7 @@ export default ({ data }) => {
       <SEO title="Home" />
       <div>
         <h4>
-          <span role="img">🦕</span>낙서장 #FF0000 <span role="img">🦕</span>
+          <span role="img">🦕</span>#FF0000 <span role="img">🦕</span>
         </h4>
         <CountPosts>{data.allMarkdownRemark.totalCount} Posts</CountPosts>
         {data.allMarkdownRemark.edges.map(({ node }) => (
