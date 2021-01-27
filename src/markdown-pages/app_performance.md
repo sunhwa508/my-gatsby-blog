@@ -1,6 +1,7 @@
 ---
 title: "앱성능개선"
 date: "2021-01-24"
+description: "작성중..︎"
 ---
 
 ### 1. useMemo, useCallback, useRef, React.memo 렌더량 줄이기
@@ -78,9 +79,7 @@ after
 cache network requests data
 cache image
 
-library 사용시 native library 위주로 사용하자 
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b71b407e-84bf-4332-a486-09d01264aa5a/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b71b407e-84bf-4332-a486-09d01264aa5a/Untitled.png)
+library 사용시 native library 위주로 사용하기
 
 ### 10. Styled-component
 

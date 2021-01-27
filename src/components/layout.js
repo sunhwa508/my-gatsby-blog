@@ -18,6 +18,15 @@ const Footer = styled.footer`
   left: 50%;
   transform: translate(-50%, -50%);
 `
+const LayoutContainer = styled.div`
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 01.0875rem 1.45rem;
+  position: relative;
+`
+const LayoutMainContainer = styled.main`
+  margin-bottom: 2rem;
+`
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -32,22 +41,10 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <Footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          © {new Date().getFullYear()}, Built with SH
-        </Footer>
-      </div>
+      <LayoutContainer>
+        <LayoutMainContainer>{children}</LayoutMainContainer>
+        <Footer>© {new Date().getFullYear()}, Built with SH</Footer>
+      </LayoutContainer>
     </>
   )
 }
