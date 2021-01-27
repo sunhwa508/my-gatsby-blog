@@ -11,12 +11,17 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "./layout.css"
 import styled from "styled-components"
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+  faYoutube,
+  faGithub,
+  faCodepen,
+} from "@fortawesome/free-brands-svg-icons"
 const Footer = styled.footer`
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `
 const LayoutContainer = styled.div`
   margin: 0 auto;
@@ -27,6 +32,25 @@ const LayoutContainer = styled.div`
 const LayoutMainContainer = styled.main`
   margin-bottom: 2rem;
 `
+const LayoutFontAwesomeIconContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  &:hover #icon:not(:hover) {
+    opacity: 0.1;
+  }
+`
+const LayoutFontAwesomeIcon = styled(FontAwesomeIcon)`
+  font-size: 2rem;
+  margin: 10px;
+  transition: 0.5s;
+  cursor: pointer;
+  color: #000;
+  &:hover {
+    transform: scale(1.2);
+    color: black;
+  }
+`
+
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -43,7 +67,26 @@ const Layout = ({ children }) => {
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <LayoutContainer>
         <LayoutMainContainer>{children}</LayoutMainContainer>
-        <Footer>© {new Date().getFullYear()}, Built with SH</Footer>
+        <Footer>
+          <LayoutFontAwesomeIconContainer>
+            <a href={"https://github.com/sunhwa508"}>
+              <LayoutFontAwesomeIcon icon={faGithub} id={"icon"} />
+            </a>
+            <a
+              href={"https://www.youtube.com/channel/UCXwBCeiqjOezNcpplFuHX9g"}
+            >
+              <LayoutFontAwesomeIcon icon={faYoutube} id={"icon"} />
+            </a>
+            <a
+              href={
+                "https://codesandbox.io/dashboard/home?workspace=ae20d5a1-abd3-4073-8a53-2d4f0c589a43"
+              }
+            >
+              <LayoutFontAwesomeIcon icon={faCodepen} id={"icon"} />
+            </a>
+          </LayoutFontAwesomeIconContainer>
+          <p>{new Date().getFullYear()}, Built with SH</p>
+        </Footer>
       </LayoutContainer>
     </>
   )

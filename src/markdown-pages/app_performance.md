@@ -10,7 +10,6 @@ description: "작성중..︎"
 
 컴퍼넌트가 같은 props로 자주 렌더링되거나, 무겁고 비용이 큰 연산이 있는 경우, React.memo()로 컴퍼넌트를 래핑할 필요가 있다.
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/378ee5b1-3e8f-4173-a678-4b2da01c9099/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210124T110759Z&X-Amz-Expires=86400&X-Amz-Signature=3e7816ff386f7e0324d992705b98b6a48cacd91588de61b952ec4b04f1dac86f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 ### 2. 안티패턴 피하기
 
 ### 3. React Native에서 "Remote debugger is in a background tab"경고 제거
@@ -59,20 +58,22 @@ const onClick = () ⇒ {}
 
 ### 9. clean up 처리하기 (login presenter)
 
-![clean up](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/d1e10e74-dee8-4c6e-aebf-78f50fee1d4f/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210124T110258Z&X-Amz-Expires=86400&X-Amz-Signature=59a058f69a836076149a1b8a43ebcae5484a6858e02f06ba642898065757101d&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+````
+setTimeout(()=>{
+    setIsTimeover(false);
+},1000);
+````
 
-before
+````
+const timeOut = setTimeout(()=>{
+                    setIsTimeover(false);
+                },1000);
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e2e8fcd4-494f-405b-a23d-e4a3f27cc11f/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210124T110323Z&X-Amz-Expires=86400&X-Amz-Signature=67e23e97ee333d34e85493bb597ab00b03953f418d0a949f883318eb7f1c802a&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+clearTimeOut(timeOut)
+````
 
+useEffect 내의 componentWillMount(return () => {})를 사용할 경우 빈배열의 의존성 피하기.
 
-after
-
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9335fe83-91cb-4b68-a651-e4be2347c589/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210124T110358Z&X-Amz-Expires=86400&X-Amz-Signature=ae83fe5bf14dacbec52218b595d26cd2914dfadf27d49f9c158679f376ff6746&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
-
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e6ab5ae5-e4ba-475d-8684-c3f7de5d63d9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210124T110435Z&X-Amz-Expires=86400&X-Amz-Signature=dd08db32f12dd69b9b16d1b53fe765ddfe6cd3d2adaa6fff9e4625eaf1f6154f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
-
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/0a2d1b8f-c022-4bd3-8606-bd176cb9e8c6/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210124T110506Z&X-Amz-Expires=86400&X-Amz-Signature=5493bf9765ff7d782464dab848407e1b395244b8e1532f2ee02c16c2d397e502&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 ### 9.1
 
