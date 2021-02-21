@@ -5,6 +5,24 @@ module.exports = {
     author: `@sunhwajs`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-firebase-messaging`,
+      options: {
+        //required unless removeFirebaseServiceWorker == true
+        config: {
+          apiKey: "AIzaSyDr2PzGa3U_rUra29QoTVnb2UcrdEnhN7s",
+          appId: "1:237932076417:web:34d0ae8e72ce774aa15c80",
+          messagingSenderId: "237932076417",
+          projectId: "omi-push-test",
+        },
+        //optionally override the firebase version used by the service worker
+        firebaseVersion: "8.2.9", //e.g., '8.1.1'
+        //optionally disables development service worker
+        disableDevelopment: true,
+        //optionally tells plugin to help unregistering/removing service worker
+        removeFirebaseServiceWorker: true,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
