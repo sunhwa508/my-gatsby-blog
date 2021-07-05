@@ -4,6 +4,7 @@ import styled from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import SearchBar from '../components/searchBar'
+import TagBar from '../components/tagBar'
 
 const BlogLink = styled(Link)`
   text-decoration: none;
@@ -41,6 +42,7 @@ export default ({ data }) => {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedTags, setSelectedTags] = useState([])
   const posts = data.allMarkdownRemark.edges
+
   function handleSearchChange({ target }) {
     setSearchQuery(target.value.toLowerCase())
   }
@@ -54,12 +56,30 @@ export default ({ data }) => {
     )
   })
 
-  console.log(filteredPosts)
+  const tags = data.tags.group
+    .sort((a, b) => {
+      if (a.totalCount === b.totalCount) return a.name > b.name ? 1 : -1
+      return a.totalCount < b.totalCount ? 1 : -1
+    })
+    .map(tag => {
+      return { ...tag, selected: selectedTags.includes(tag.name) }
+    })
+
+  function handleTagSelect({ target }) {
+    setSelectedTags(prevTags => {
+      if (prevTags.includes(target.value)) {
+        return prevTags.filter(tag => target.value !== tag)
+      } else {
+        return [...prevTags, target.value]
+      }
+    })
+  }
 
   return (
     <Layout>
       <SEO title="Home" />
       <SearchBar query={searchQuery} onChange={handleSearchChange} />
+      <TagBar tags={tags} onTagSelect={handleTagSelect} />
       <div>
         <CountPosts>{data.allMarkdownRemark.totalCount} Posts</CountPosts>
         {filteredPosts.map(({ node }) => (
@@ -78,6 +98,12 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
+    tags: allMarkdownRemark {
+      group(field: frontmatter___tags) {
+        name: fieldValue
+        totalCount
+      }
+    }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       totalCount
       edges {
@@ -89,6 +115,7 @@ export const query = graphql`
             date
             description
             title
+            tags
           }
           fields {
             slug

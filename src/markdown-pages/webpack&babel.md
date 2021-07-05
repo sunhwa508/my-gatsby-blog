@@ -2,6 +2,7 @@
 title: " 웹 벨 바 팩 "
 date:  "2021-01-25"
 description: "☃︎"
+tags: "webpack/babel"
 ---
 
 ### 웹팩 / 바벨 

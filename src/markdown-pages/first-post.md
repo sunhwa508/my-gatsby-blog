@@ -2,6 +2,7 @@
 title: "Front Monkey 유튜브 x_x"
 date:  "2021-01-23"
 description: "My first Video☃︎"
+tags: "javascript"
 ---
 
 유튜브 채널

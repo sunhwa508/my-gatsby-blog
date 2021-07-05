@@ -2,6 +2,7 @@
 title: "앱성능개선"
 date: "2021-01-24"
 description: "작성중..︎"
+tags: "javascript"
 ---
 
 ### 1. useMemo, useCallback, useRef, React.memo 렌더량 줄이기
