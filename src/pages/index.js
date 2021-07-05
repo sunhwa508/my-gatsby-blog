@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql, Link } from "gatsby"
 import styled from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import SearchBar from '../components/searchBar'
 
 const BlogLink = styled(Link)`
   text-decoration: none;
@@ -37,13 +38,31 @@ const ContentExcerpt = styled.p`
   color: #000;
 `
 export default ({ data }) => {
-  console.log("data", data)
+  const [searchQuery, setSearchQuery] = useState("")
+  const [selectedTags, setSelectedTags] = useState([])
+  const posts = data.allMarkdownRemark.edges
+  function handleSearchChange({ target }) {
+    setSearchQuery(target.value.toLowerCase())
+  }
+
+  const filteredPosts = posts.filter(({ node }) => {
+    return (
+      (node.frontmatter.title.toLowerCase().includes(searchQuery) ||
+        node.frontmatter.description.toLowerCase().includes(searchQuery)) &&
+      (selectedTags.length === 0 ||
+        node.frontmatter.tags.some(tag => selectedTags.includes(tag)))
+    )
+  })
+
+  console.log(filteredPosts)
+
   return (
     <Layout>
       <SEO title="Home" />
+      <SearchBar query={searchQuery} onChange={handleSearchChange} />
       <div>
         <CountPosts>{data.allMarkdownRemark.totalCount} Posts</CountPosts>
-        {data.allMarkdownRemark.edges.map(({ node }) => (
+        {filteredPosts.map(({ node }) => (
           <BlogLink to={node.fields.slug}>
             <ContentContainer key={node.id}>
               <BlogTitle>{node.frontmatter.title}</BlogTitle>
