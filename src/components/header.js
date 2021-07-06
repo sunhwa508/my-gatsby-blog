@@ -1,10 +1,10 @@
-import PropTypes from "prop-types"
+import PropTypes, { any } from "prop-types"
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-
+import SearchBar from './searchBar'
 const HeaderContainer = styled.header`
-  background-color: ivory;
+  background-color: whitesmoke;
   margin-bottom: 1.45rem;
   position: fixed;
   width:100%;

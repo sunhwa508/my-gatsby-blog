@@ -17,6 +17,7 @@ import {
   faGithub,
   faCodepen,
 } from "@fortawesome/free-brands-svg-icons"
+import SearchBar from './searchBar'
 const Footer = styled.footer`
   display: flex;
   justify-content: center;

@@ -12,21 +12,22 @@ const TagStyles = styled.input`
 
 const TagSpan = styled.span`
     font-size:20px;
-    border:1px solid black;
+    border-right:1px solid black;
     padding:5px;
+    border-radius: 8px;
     background-color: ${props => props.onTagSelect ? "goldenrod" : "white"};
     color: ${props => props.onTagSelect ? "white" : "black"};
 `;
 const TagCount = styled.div`
     font-size:20px;
-     padding:0 10px;
+    padding:0 10px;
 `;
 const TagLabel = styled.label`
     display:flex;
-    border:1px solid black;
+    border:0.8px solid black;
     align-items: center;
     margin: 0 10px;
-    border-radius: 5px;
+    border-radius: 8px;
 `;
 
 export default function Tag({ tag, onTagSelect, marginTop = 10 }) {
