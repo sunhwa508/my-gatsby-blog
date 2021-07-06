@@ -14,6 +14,8 @@ const TagSpan = styled.span`
     font-size:20px;
     border:1px solid black;
     padding:5px;
+    background-color: ${props => props.onTagSelect ? "goldenrod" : "white"};
+    color: ${props => props.onTagSelect ? "white" : "black"};
 `;
 const TagCount = styled.div`
     font-size:20px;
@@ -43,7 +45,7 @@ export default function Tag({ tag, onTagSelect, marginTop = 10 }) {
                 htmlFor={onTagSelect && `tag-${tag.name}`}
                 style={{ marginTop: marginTop }}
             >
-                <TagSpan>{tag.name}</TagSpan>
+                <TagSpan onTagSelect={tag.selected}>{tag.name}</TagSpan>
                 {tag.totalCount && <TagCount>{tag.totalCount}</TagCount>}
             </TagLabel>
         </>
