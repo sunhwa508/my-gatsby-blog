@@ -2,7 +2,7 @@
 title: "Memoization, Currying"
 date:  "2021-01-26"
 description: "Memoization ︎🤓"
-tags: "javascript"
+tags: ["javascript"]
 ---
  ## Memoization ? 
  > memoization is a specific form of caching

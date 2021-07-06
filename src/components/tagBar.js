@@ -7,7 +7,6 @@ const WRAPPER_STYLES = {
 }
 
 export default function TagBar({ tags, onTagSelect, marginTop }) {
-    console.log("tags", tags)
     return (
         <div style={WRAPPER_STYLES}>
             {tags.map(tag => {
