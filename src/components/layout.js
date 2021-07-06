@@ -28,6 +28,7 @@ const LayoutContainer = styled.div`
   max-width: 960px;
   padding: 01.0875rem 1.45rem;
   position: relative;
+  margin-top:100px;
 `
 const LayoutMainContainer = styled.main`
   margin-bottom: 2rem;

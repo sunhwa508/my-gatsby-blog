@@ -4,8 +4,12 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 
 const HeaderContainer = styled.header`
-  background: white;
+  background-color: ivory;
   margin-bottom: 1.45rem;
+  position: fixed;
+  width:100%;
+  top:0;
+  z-index:9999999;
 `
 const HeaderDiv = styled.div`
   margin: 0 auto;
