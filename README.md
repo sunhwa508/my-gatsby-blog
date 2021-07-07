@@ -53,12 +53,18 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 12. **`README.md`**: 프로젝트에 대한 유용한 참조 정보가 포함 된 텍스트 파일입니다.
 
 ## TODO
-[x]태그기능 추가
-[x]contents 검색 기능 추가
-[ ] typescript로 코드 리팩토링
-[ ] 검색엔진 최적화 (SEO) 검색결과 확인해보기
-[ ] Reading Time추가 -> gatsby-remark-reading-time
-[ ]
+- [x] 태그기능 추가
+- [x] contents 검색 기능 추가
+- [ ] typescript로 코드 리팩토링
+- [ ] 검색엔진 최적화 (SEO) 검색결과 확인해보기
+- [ ] Reading Time추가 -> gatsby-remark-reading-time
+- [ ] 카테고리 추가(Nav)
+- [ ] contents table, Tod 추가하기 (라이브러리사용 allejo/jekyll-to ,
+ Gatsby-remark-autolink-headers)
+- [ ] 썸네일 이미지 추가 ( frontmatter featuredImage )
+- [ ] 이전글 다음글 기능 추가
+- [ ] 댓글 기능추가 (disqus vs utterances 라이브러리)
+  
 
 ## Reference
 [gatsby 공식문서](https://www.gatsbyjs.com/starters/?)
