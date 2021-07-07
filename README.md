@@ -52,6 +52,13 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 12. **`README.md`**: 프로젝트에 대한 유용한 참조 정보가 포함 된 텍스트 파일입니다.
 
-## Reference
+## TODO
+[x]태그기능 추가
+[x]contents 검색 기능 추가
+[ ] typescript로 코드 리팩토링
+[ ] 검색엔진 최적화 (SEO) 검색결과 확인해보기
+[ ] Reading Time추가 -> gatsby-remark-reading-time
+[ ]
 
+## Reference
 [gatsby 공식문서](https://www.gatsbyjs.com/starters/?)
