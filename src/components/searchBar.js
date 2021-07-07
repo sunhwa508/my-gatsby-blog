@@ -24,10 +24,9 @@ const Label = styled.label`
 `;
 
 export default function SearchBar({ query, onChange }) {
-    console.log(query, onchange)
     return (
         <SearchDiv>
-            <Label htmlFor="search">🔍</Label>
+            <Label htmlFor="search"><span role="img" aria-hidden="true" >🔍</span></Label>
             <SearchInput
                 placeholder="Search..."
                 id="search"
