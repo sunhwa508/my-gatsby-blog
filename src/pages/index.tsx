@@ -1,10 +1,36 @@
 import React, { useState } from "react"
-import { graphql, Link } from "gatsby"
+import { graphql, Link, PageProps } from "gatsby"
 import styled from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import SearchBar from '../components/searchBar'
 import TagBar from '../components/tagBar'
+
+interface Props {
+  data: {
+    tags: {
+      allMarkdownRemark: any
+      group: any
+    }
+    allMarkdownRemark: any
+    site: {
+      siteMetadata: {
+        title: string
+      }
+    }
+  }
+}
+
+interface Data {
+  target: any;
+  name: any;
+  tag: any;
+  totalCount: number;
+}
+
+interface Array<T> {
+  includes<U>(searchElement: U, fromIndex?: number): U extends T ? boolean : false;
+}
 
 const BlogLink = styled(Link)`
   text-decoration: none;
@@ -38,37 +64,37 @@ const ContentContainer = styled.div`
 const ContentExcerpt = styled.p`
   color: #000;
 `
-export default ({ data }) => {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [selectedTags, setSelectedTags] = useState([])
+const Index = ({ data }: Props) => {
+  const [searchQuery, setSearchQuery] = useState<string>("")
+  const [selectedTags, setSelectedTags] = useState<string[]>([])
   const posts = data.allMarkdownRemark.edges
 
-  function handleSearchChange({ target }) {
+  function handleSearchChange({ target }: Data) {
     setSearchQuery(target.value.toLowerCase())
   }
 
-  const filteredPosts = posts.filter(({ node }) => {
+  const filteredPosts = posts.filter(({ node }: any) => {
     return (
       (node.frontmatter.title.toLowerCase().includes(searchQuery) ||
         node.frontmatter.description.toLowerCase().includes(searchQuery)) &&
       (selectedTags.length === 0 ||
-        node.frontmatter.tags.some(tag => selectedTags.includes(tag)))
+        node.frontmatter.tags.some((tag: any) => selectedTags.includes(tag)))
     )
   })
 
   const tags = data.tags.group
-    .sort((a, b) => {
+    .sort((a: Data, b: Data) => {
       if (a.totalCount === b.totalCount) return a.name > b.name ? 1 : -1
       return a.totalCount < b.totalCount ? 1 : -1
     })
-    .map(tag => {
+    .map((tag: Data) => {
       return { ...tag, selected: selectedTags.includes(tag.name) }
     })
 
-  function handleTagSelect({ target }) {
-    setSelectedTags(prevTags => {
+  function handleTagSelect({ target }: Data) {
+    setSelectedTags((prevTags: any) => {
       if (prevTags.includes(target.value)) {
-        return prevTags.filter(tag => target.value !== tag)
+        return prevTags.filter((tag: Data) => target.value !== tag)
       } else {
         return [...prevTags, target.value]
       }
@@ -76,52 +102,56 @@ export default ({ data }) => {
   }
 
   return (
-    <Layout query={searchQuery} onChange={handleSearchChange} >
+    <Layout>
       <SEO title="Home" />
       <SearchBar query={searchQuery} onChange={handleSearchChange} />
       <TagBar tags={tags} onTagSelect={handleTagSelect} />
       <div>
-        <CountPosts>{data.allMarkdownRemark.totalCount} Posts</CountPosts>
-        {filteredPosts.map(({ node }) => (
-          <BlogLink key={node.id} to={node.fields.slug}>
-            <ContentContainer key={node.id}>
-              <BlogTitle>{node.frontmatter.title}</BlogTitle>
-              <ContentExcerpt>{node.excerpt}</ContentExcerpt>
-              <BlogDate>{node.frontmatter.date}</BlogDate>
-            </ContentContainer>
-          </BlogLink>
-        ))}
+        <CountPosts>{data.allMarkdownRemark.totalCount} Posts </CountPosts>
+        {
+          filteredPosts.map(({ node }: any) => (
+            <BlogLink key={node.id} to={node.fields.slug} >
+              <ContentContainer key={node.id} >
+                <BlogTitle>{node.frontmatter.title} </BlogTitle>
+                < ContentExcerpt > {node.excerpt} </ContentExcerpt>
+                < BlogDate > {node.frontmatter.date} </BlogDate>
+              </ContentContainer>
+            </BlogLink>
+          ))
+        }
       </div>
     </Layout>
   )
 }
 
+export default Index;
+
 export const query = graphql`
-  query {
-    tags: allMarkdownRemark {
-      group(field: frontmatter___tags) {
+      query {
+        tags: allMarkdownRemark {
+        group(field: frontmatter___tags) {
         name: fieldValue
-        totalCount
+      totalCount
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      totalCount
+      allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC }) {
+        totalCount
       edges {
         node {
-          excerpt
+        excerpt
           html
-          id
-          frontmatter {
-            date(formatString: "YYYY/MM/DD")
-            description
-            title
-            tags
+      id
+      frontmatter {
+        date(formatString: "YYYY/MM/DD")
+      description
+      title
+      tags
           }
-          fields {
-            slug
-          }
+      fields {
+        slug
+      }
         }
       }
     }
   }
-`
+      `

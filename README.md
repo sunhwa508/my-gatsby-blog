@@ -64,6 +64,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 - [ ] 썸네일 이미지 추가 ( frontmatter featuredImage )
 - [ ] 이전글 다음글 기능 추가
 - [ ] 댓글 기능추가 (disqus vs utterances 라이브러리)
+- [ ] eslint, husky 추가
   
 
 ## Reference

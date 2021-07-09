@@ -1,4 +1,3 @@
-import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
@@ -23,7 +22,11 @@ const HeaderLink = styled(Link)`
   color: black;
   text-decoration: none;
 `
-const Header = ({ siteTitle }) => (
+interface Props {
+  siteTitle: string;
+}
+
+const Header = ({ siteTitle = '' }: Props) => (
   <HeaderContainer>
     <HeaderDiv>
       <HeaderText>
@@ -32,13 +35,5 @@ const Header = ({ siteTitle }) => (
     </HeaderDiv>
   </HeaderContainer>
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header

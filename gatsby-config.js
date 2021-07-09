@@ -5,6 +5,7 @@ module.exports = {
     author: `@sunhwajs`,
   },
   plugins: [
+    `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-plugin-firebase-messaging`,
       options: {

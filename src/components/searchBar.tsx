@@ -22,8 +22,11 @@ const Label = styled.label`
     align-items: center;
     margin-right:0.1em;
 `;
-
-export default function SearchBar({ query, onChange }) {
+interface Props {
+    query: string;
+    onChange: ({ target }: any) => void
+}
+export default function SearchBar({ query, onChange }: Props) {
     return (
         <SearchDiv>
             <Label htmlFor="search"><span role="img" aria-hidden="true" >🔍</span></Label>
