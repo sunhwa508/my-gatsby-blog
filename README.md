@@ -55,9 +55,9 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 ## TODO
 - [x] 태그기능 추가
 - [x] contents 검색 기능 추가
-- [ ] typescript로 코드 리팩토링
+- [x] typescript로 코드 리팩토링
 - [ ] 검색엔진 최적화 (SEO) 검색결과 확인해보기
-- [ ] Reading Time추가 -> gatsby-remark-reading-time
+- [x] Reading Time추가 -> gatsby-remark-reading-time
 - [ ] 카테고리 추가(Nav)
 - [ ] contents table, Tod 추가하기 (라이브러리사용 allejo/jekyll-to ,
  Gatsby-remark-autolink-headers)
