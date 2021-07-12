@@ -17,6 +17,11 @@ import {
   faCodepen,
 } from "@fortawesome/free-brands-svg-icons"
 
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 const Footer = styled.footer`
   display: flex;
   justify-content: center;
@@ -24,7 +29,6 @@ const Footer = styled.footer`
   flex-direction: column;
 `
 const LayoutContainer = styled.div`
-  margin: 0 auto;
   max-width: 960px;
   padding: 01.0875rem 1.45rem;
   position: relative;
@@ -32,6 +36,7 @@ const LayoutContainer = styled.div`
 `
 const LayoutMainContainer = styled.main`
   margin-bottom: 2rem;
+
 `
 const LayoutFontAwesomeIconContainer = styled.div`
   display: flex;
@@ -64,7 +69,7 @@ const Layout: React.FC = ({ children }) => {
   `)
 
   return (
-    <>
+    <Container>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <LayoutContainer>
         <LayoutMainContainer>{children}</LayoutMainContainer>
@@ -89,7 +94,7 @@ const Layout: React.FC = ({ children }) => {
           <p>{new Date().getFullYear()}, Built with SH</p>
         </Footer>
       </LayoutContainer>
-    </>
+    </Container>
   )
 }
 
