@@ -10,12 +10,14 @@ interface Props {
 }
 
 const Container = styled.div`
-position: absolute;
-top:0;
-height:100%;
-right: calc((100vw - 1220px) / 2 * (-1));
+position: fixed;
+top:70px;
+left: calc(50% + 500px);
 `
-
+const PostWrapper = styled.div`
+    line-height: 30px;
+    position: static;
+`;
 export default ({ data }: Props) => {
   const tocItems = data.markdownRemark.tableOfContents
   const isTOCVisible = tocItems.length > 0;
@@ -54,14 +56,16 @@ export default ({ data }: Props) => {
     <Layout>
       <h1>{post.frontmatter.title}</h1>
       {isTOCVisible && (
+
         <Container>
           <TableOfContents
             items={tocItems}
             currentHeaderUrl={currentHeaderUrl}
           />
         </Container>
+
       )}
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      <PostWrapper dangerouslySetInnerHTML={{ __html: post.html }} />
     </Layout>
   )
 }

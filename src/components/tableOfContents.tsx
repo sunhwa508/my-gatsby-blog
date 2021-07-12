@@ -15,16 +15,21 @@ const Contents = styled.div`
     }
     ul > li a.isCurrent {
       font-size: 15px;
-      color: color.getColor('text');
+      color: gray;
       font-weight: 600;
+    }
+    a{
+        text-decoration:none;
+        color:#000;
     }
 `;
 const Title = styled.h3`
     margin-bottom: 15px;
     margin-left: 20px;
+    text-decoration:none;
 `;
 const Nav = styled.nav`
- margin-top: 80px;
+  margin-top: 80px;
   width: calc((100vw - 720px) / 2 - 50px);
   display: none;
   @media screen and (min-width: 1200px) {
@@ -53,6 +58,7 @@ export default function TableOfContents({ items, currentHeaderUrl }: Props) {
             return items;
         }
     }, [currentHeaderUrl]);
+
     return items ? (
         <Nav>
             <Title>TABLE OF CONTENTS</Title>

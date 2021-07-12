@@ -21,22 +21,24 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
 `
 const Footer = styled.footer`
   display: flex;
+  bottom:0;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 `
 const LayoutContainer = styled.div`
-  max-width: 960px;
+  width: 960px;
   padding: 01.0875rem 1.45rem;
-  position: relative;
   margin-top:100px;
+
 `
 const LayoutMainContainer = styled.main`
   margin-bottom: 2rem;
-
+  position:relative;
 `
 const LayoutFontAwesomeIconContainer = styled.div`
   display: flex;

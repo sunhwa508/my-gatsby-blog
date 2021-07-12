@@ -59,7 +59,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 - [ ] 검색엔진 최적화 (SEO) 검색결과 확인해보기
 - [ ] Reading Time추가 -> gatsby-remark-reading-time
 - [ ] 카테고리 추가(Nav)
-- [ ] contents table, Tod 추가하기 (라이브러리사용 allejo/jekyll-to ,
+- [x] contents table, Tod 추가하기 (라이브러리사용 allejo/jekyll-to ,
  Gatsby-remark-autolink-headers)
 - [ ] 썸네일 이미지 추가 ( frontmatter featuredImage )
 - [ ] 이전글 다음글 기능 추가

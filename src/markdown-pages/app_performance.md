@@ -76,13 +76,6 @@ clearTimeOut(timeOut)
 useEffect 내의 componentWillMount(return () => {})를 사용할 경우 빈배열의 의존성 피하기.
 
 
-### 9.1
-
-cache network requests data
-cache image
-
-library 사용시 native library 위주로 사용하기
-
 ### 10. Styled-component
 
 -> emotion 변경 
@@ -147,5 +140,6 @@ npm i babel-plugin-transform-remove-console --save-dev
 }
 ```
 
-### 14.
+### reference
+
 > [https://www.novemberfive.co/blog/react-performance-navigation-animations](https://www.novemberfive.co/blog/react-performance-navigation-animations)

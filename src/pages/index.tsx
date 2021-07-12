@@ -28,10 +28,6 @@ interface Data {
   totalCount: number;
 }
 
-interface Array<T> {
-  includes<U>(searchElement: U, fromIndex?: number): U extends T ? boolean : false;
-}
-
 const BlogLink = styled(Link)`
   text-decoration: none;
 `
@@ -54,11 +50,11 @@ const ContentContainer = styled.div`
   padding: 2rem;
   margin-bottom: 1rem;
   border-radius: 0.7rem;
-  transform: translateY(0);
+  border:3px dotted transparent;
   transition: 0.5s;
 
   &:hover {
-    transform: translateY(-5%);
+    border:3px dotted yellowgreen;
   }
 `
 const ContentExcerpt = styled.p`
