@@ -66,7 +66,6 @@ module.exports = {
         removeAccents: true,
         isIconAfterHeader: true,
         elements: [`h2`, 'h3', `h4`], // 링크를 추가할 Header 종류 선택
-        
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

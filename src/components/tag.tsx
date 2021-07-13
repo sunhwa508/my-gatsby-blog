@@ -15,8 +15,8 @@ const TagSpan = styled.span`
     border-right:1px solid black;
     padding:5px;
     border-radius: 8px;
-    background-color: ${(props: { onTagSelect: boolean }) => props.onTagSelect ? "goldenrod" : "white"};
-    color: ${(props: { onTagSelect: boolean }) => props.onTagSelect ? "white" : "black"};
+    background-color: ${(props: { OnTagSelected: boolean }) => props.OnTagSelected ? "goldenrod" : "white"};
+    color: ${(props: { OnTagSelected: boolean }) => props.OnTagSelected ? "white" : "black"};
 `;
 
 const TagCount = styled.div`
@@ -52,7 +52,7 @@ const Tag = ({ onTagSelect, tag, marginTop = 0 }: Props) => {
                 htmlFor={`tag - ${tag.name} `}
                 style={{ marginTop: marginTop }}
             >
-                <TagSpan onTagSelect={tag.selected}>{tag.name}</TagSpan>
+                <TagSpan OnTagSelected={tag.selected}>{tag.name}</TagSpan>
                 {tag.totalCount && <TagCount>{tag.totalCount}</TagCount>}
             </TagLabel>
         </>
