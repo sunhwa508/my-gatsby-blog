@@ -56,6 +56,7 @@ type Props = {
     currentHeaderUrl: any;
 }
 export default function TableOfContents({ items, currentHeaderUrl }: Props) {
+    console.log("currentHeaderUrl", currentHeaderUrl)
     const replaceItems = useMemo(() => {
         if (currentHeaderUrl) {
             return items.replace(

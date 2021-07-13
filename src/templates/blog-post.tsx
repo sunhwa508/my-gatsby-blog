@@ -21,7 +21,7 @@ const PostWrapper = styled.div`
 export default ({ data }: Props) => {
   const tocItems = data.markdownRemark.tableOfContents
   const isTOCVisible = tocItems.length > 0;
-  const [currentHeaderUrl, setCurrentHeaderUrl] = useState(undefined);
+  const [currentHeaderUrl, setCurrentHeaderUrl] = useState();
   const post = data.markdownRemark
 
   const HEADER_OFFSET_Y = 100;
