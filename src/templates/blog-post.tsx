@@ -56,7 +56,6 @@ export default ({ data }: Props) => {
     <Layout>
       <h1>{post.frontmatter.title}</h1>
       {isTOCVisible && (
-
         <Container>
           <TableOfContents
             items={tocItems}

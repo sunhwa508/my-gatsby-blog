@@ -17,10 +17,18 @@ const Contents = styled.div`
       font-size: 15px;
       color: gray;
       font-weight: 600;
-    }
+      
+    } 
     a{
         text-decoration:none;
         color:#000;
+        &hover{
+            color:gray;
+        }
+        & .anchor {
+            fill: "red";
+          }
+        
     }
 `;
 const Title = styled.h3`
@@ -34,8 +42,8 @@ const Nav = styled.nav`
   display: none;
   @media screen and (min-width: 1200px) {
     position: sticky;
-    right:0;
     display: block;
+    right:0;
     max-width: 360px;
     word-break: break-word;
     max-height: calc(100vh - 200px);
@@ -52,13 +60,12 @@ export default function TableOfContents({ items, currentHeaderUrl }: Props) {
         if (currentHeaderUrl) {
             return items.replace(
                 `"${currentHeaderUrl}"`,
-                `"${currentHeaderUrl}" `
+                `"${currentHeaderUrl}"`
             );
         } else {
             return items;
         }
     }, [currentHeaderUrl]);
-
     return items ? (
         <Nav>
             <Title>TABLE OF CONTENTS</Title>
