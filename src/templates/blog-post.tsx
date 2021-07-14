@@ -58,8 +58,7 @@ export default ({ data }: Props) => {
       {isTOCVisible && (
         <Container>
           <TableOfContents
-            items={tocItems}
-            currentHeaderUrl={currentHeaderUrl}
+            headings={post.headings}
           />
         </Container>
 
@@ -73,6 +72,10 @@ export const query = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      headings {
+        value
+        depth
+    }
       frontmatter {
         title
       }

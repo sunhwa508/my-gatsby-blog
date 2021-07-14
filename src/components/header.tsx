@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 const HeaderContainer = styled.header`
   background-color: whitesmoke;
   margin-bottom: 1.45rem;
-  position: fixed;
+  position: absolute;
   width:100%;
   top:0;
   z-index:9999999;

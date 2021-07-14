@@ -1,78 +1,74 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 
-const Contents = styled.div`
-    ul {
-      list-style: none;
-      margin-left: 20px;
-      margin-bottom: 0px;
+
+const Toc = styled.ul`
+  position:fixed;
+  width: 20rem;
+  left: calc(50% + 450px);
+  top: 120px;
+  max-height: 30vh;
+  margin-left:20px;
+  @media screen and (max-width: 1080px) {
+        display:none;
     }
-    ul > li {
-      line-height: 1.5rem;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    ul > li a.isCurrent {
-      font-size: 15px;
-      color: gray;
-      font-weight: 600;
-      
-    } 
-    a{
-        text-decoration:none;
-        color:#000;
-        &hover{
-            color:gray;
-        }
-        & .anchor {
-            fill: "red";
-          }
-        
-    }
+`
+
+const Title = styled.h2`
+margin-bottom: 10px;
+`
+
+const ToCElement = styled.li`
+margin-left:10px;
+list-style: none;
+&:hover{
+    color:white;
+    background-color: gray;
+}
+`
+
+const ToCLink = styled.a`
+transition: .5s ease;
+text-decoration:none;
+color:black;
+&:hover{
+    color:white;
+}
+
+`
+
+const InnerScroll = styled.div`
+  scrollbar-width: thin;
+  scrollbar-color: #367ee9 rgba(48, 113, 209, 0.3);
+  overflow: hidden auto;
 `;
-const Title = styled.h3`
-    margin-bottom: 15px;
-    margin-left: 20px;
-    text-decoration:none;
-`;
-const Nav = styled.nav`
-  margin-top: 80px;
-  width: calc((100vw - 720px) / 2 - 50px);
-  display: none;
-  @media screen and (min-width: 1200px) {
-    position: sticky;
-    display: block;
-    right:0;
-    max-width: 360px;
-    word-break: break-word;
-    max-height: calc(100vh - 200px);
-    font-size: 14px;
-  }
- 
-`;
+
 type Props = {
-    items: any;
-    currentHeaderUrl: any;
+    headings: any;
 }
-export default function TableOfContents({ items, currentHeaderUrl }: Props) {
-    console.log("currentHeaderUrl", currentHeaderUrl)
-    const replaceItems = useMemo(() => {
-        if (currentHeaderUrl) {
-            return items.replace(
-                `"${currentHeaderUrl}"`,
-                `"${currentHeaderUrl}"`
-            );
-        } else {
-            return items;
-        }
-    }, [currentHeaderUrl]);
-    return items ? (
-        <Nav>
-            <Title>TABLE OF CONTENTS</Title>
-            <Contents
-                dangerouslySetInnerHTML={{ __html: replaceItems }}
-            />
-        </Nav>
-    ) : null;
+export default function TableOfContents({ headings }: Props) {
+    return (
+        <Toc>
+            <Title>Table of contents</Title>
+            <InnerScroll>
+                {headings.map((heading: any) => {
+                    if (heading.depth > 4) {
+                        return <div />
+                    }
+                    return (
+                        <ToCElement key={heading.value}>
+                            <ToCLink
+                                href={`#${heading.value.replace(/\s+/g, "-").toLowerCase()}`}
+                            >
+                                {heading.value}
+                            </ToCLink>
+                        </ToCElement>
+                    )
+                })}
+            </InnerScroll>
+        </Toc>
+    )
+
 }
+
+
